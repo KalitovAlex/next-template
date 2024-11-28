@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@nextui-org/react";
 import { useFormContext } from "react-hook-form";
 import { useState } from "react";

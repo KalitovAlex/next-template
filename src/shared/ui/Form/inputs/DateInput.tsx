@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@nextui-org/react";
 import { useFormContext } from "react-hook-form";
 import { DateInputProps } from "@/shared/ui/Form/types";

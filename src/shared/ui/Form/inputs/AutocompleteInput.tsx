@@ -1,3 +1,5 @@
+"use client";
+
 import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
 import { useFormContext, Controller } from "react-hook-form";
 import { AutocompleteInputProps } from "@/shared/ui/Form/types";

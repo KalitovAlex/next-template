@@ -1,31 +1,7 @@
-export interface Person {
-  firstName: string;
-  lastName: string;
-  patronymic: string;
-}
+import { User } from "@/entities/user";
 
-export interface SignUpDto {
-  email: string;
-  password: string;
-  person: Person;
-}
-
-export interface SignInDto {
-  email: string;
-  password: string;
-}
-
-export interface AuthResponse {
+export interface Tokens {
   accessToken: string;
   refreshToken: string;
+  user: User;
 }
-
-export interface RefreshTokenDto {
-  refreshToken: string;
-}
-
-export interface User {
-  id: string;
-  email: string;
-  person: Person;
-} 
