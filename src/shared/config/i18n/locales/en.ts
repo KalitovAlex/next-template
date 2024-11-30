@@ -39,8 +39,5 @@ export const en = {
       title: "Dashboard",
       welcome: "Welcome back",
     }
-  },
-  common: {
-    toggleTheme: "Toggle theme"
   }
 }; 

@@ -132,7 +132,7 @@ export const SignupForm = () => {
               type="submit"
               color="primary"
               isLoading={isSigningUp}
-              className="w-full bg-primary-400 dark:bg-primary-900 font-bold p-4 text-lg"
+              className="w-full bg-primary-400 font-bold p-4 text-lg"
               size="lg"
             >
               {t.auth.signUp}
@@ -143,7 +143,7 @@ export const SignupForm = () => {
               </span>
               <Link
                 href="/auth"
-                className="text-primary-400 dark:text-primary-400 text-sm font-medium"
+                className="text-primary-400 text-sm font-medium"
               >
                 {t.auth.signIn}
               </Link>

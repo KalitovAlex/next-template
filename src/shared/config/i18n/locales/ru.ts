@@ -39,8 +39,5 @@ export const ru = {
       title: "Панель управления",
       welcome: "Добро пожаловать",
     }
-  },
-  common: {
-    toggleTheme: "Переключить тему"
   }
 }; 
