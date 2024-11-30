@@ -9,10 +9,21 @@ import {
 import { FormFieldType } from "@/shared/ui/Form/types";
 import { t } from "@/shared/config/localization";
 import { Form } from "@/shared/ui/Form/Form";
+import { useState } from "react";
+import { EyeSlashIcon } from "@/shared/ui/Form/icons/EyeSlashIcon";
+import { EyeIcon } from "@/shared/ui/Form/icons/EyeIcon";
 
 export const SignupForm = () => {
   const { signup, isSigningUp } = useAuth();
   const signupSchema = useSignupSchema();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false);
+
+  const togglePasswordVisibility = () =>
+    setIsPasswordVisible(!isPasswordVisible);
+  const toggleConfirmPasswordVisibility = () =>
+    setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
 
   const fields: FormFieldType[] = [
     {
@@ -32,6 +43,41 @@ export const SignupForm = () => {
       required: true,
       autoComplete: "new-password",
       className: "w-full",
+      endContent: (
+        <button
+          type="button"
+          onClick={togglePasswordVisibility}
+          className="focus:outline-none"
+        >
+          {isPasswordVisible ? (
+            <EyeSlashIcon className="w-4 h-4" />
+          ) : (
+            <EyeIcon className="w-4 h-4" />
+          )}
+        </button>
+      ),
+    },
+    {
+      name: "confirmPassword",
+      label: t.auth.confirmPassword,
+      type: "password",
+      placeholder: t.auth.enterConfirmPassword,
+      required: true,
+      autoComplete: "new-password",
+      className: "w-full",
+      endContent: (
+        <button
+          type="button"
+          onClick={toggleConfirmPasswordVisibility}
+          className="focus:outline-none"
+        >
+          {isConfirmPasswordVisible ? (
+            <EyeSlashIcon className="w-4 h-4" />
+          ) : (
+            <EyeIcon className="w-4 h-4" />
+          )}
+        </button>
+      ),
     },
     {
       name: "person.firstName",
@@ -60,11 +106,12 @@ export const SignupForm = () => {
   ];
 
   const handleSubmit = (values: SignupFormValues) => {
-    signup(values);
+    const { ...submitData } = values;
+    signup(submitData);
   };
 
   return (
-    <Card className="w-full max-w-[800px]">
+    <Card className="w-full max-w-[800px] dark:bg-content1">
       <CardHeader className="flex justify-between items-center px-6 py-4">
         <div className="flex flex-col">
           <p className="text-md font-bold">{t.auth.createAccount}</p>

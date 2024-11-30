@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ReactNode } from "react";
 import { InputProps } from "@nextui-org/react";
-import { AutocompleteOption } from "../../constants";
+import { AutoCompleteOption } from "@/shared/types/common";
 
 export type InputType =
   | "text"
@@ -35,7 +35,9 @@ export interface DateInputProps extends BaseInputProps {
 
 export interface AutocompleteInputProps extends BaseInputProps {
   type: "autocomplete";
-  options: AutocompleteOption[];
+  options: AutoCompleteOption[];
+  description?: string;
+  icon?: ReactNode;
 }
 
 export interface PhoneInputProps extends BaseInputProps {
@@ -57,7 +59,7 @@ export type FormFieldType =
 
 export type FormLayout = "flex" | "grid";
 
-export interface FormProps<T extends z.ZodObject<z.ZodRawShape>> {
+export interface FormProps<T extends z.ZodTypeAny> {
   fields: FormFieldType[];
   onSubmit: (values: z.infer<T>) => void;
   children?: ReactNode;

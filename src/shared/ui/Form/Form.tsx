@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { FormInputs } from "./inputs";
 
-export const Form = <T extends z.ZodObject<z.ZodRawShape>>({
+export const Form = <T extends z.ZodTypeAny>({
   fields,
   onSubmit,
   children,
@@ -22,8 +22,9 @@ export const Form = <T extends z.ZodObject<z.ZodRawShape>>({
   className,
   layout = "flex",
 }: FormProps<T>) => {
-  const methods = useForm<z.infer<T>>({
+  const methods = useForm({
     resolver: zodResolver(schema),
+    mode: "onChange",
   });
 
   const getLayoutClass = () => {

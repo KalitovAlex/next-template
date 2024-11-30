@@ -31,4 +31,4 @@ export const EyeSlashIcon = (props: React.SVGProps<SVGSVGElement>) => (
       strokeWidth={1.5}
     />
   </svg>
-); 
+);

@@ -1,4 +1,4 @@
-import { DashboardWrapper } from './dashboard-wrapper';
+import { DashboardWrapper } from "./dashboard-wrapper";
 
 export default function DashBoard() {
   return <DashboardWrapper />;

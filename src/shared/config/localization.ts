@@ -26,6 +26,8 @@ export const t = {
     enterLastName: "Введите фамилию",
     enterPatronymic: "Введите отчество",
     signupFailed: "Ошибка при регистрации",
+    confirmPassword: "Подтверждение пароля",
+    enterConfirmPassword: "Повторите пароль",
     validation: {
       emailRequired: "Email обязателен",
       emailInvalid: "Неверный формат email",
@@ -34,6 +36,7 @@ export const t = {
       firstNameRequired: "Имя обязательно",
       lastNameRequired: "Фамилия обязательна",
       patronymicRequired: "Отчество обязательно",
+      passwordsDoNotMatch: "Пароли не совпадают",
     },
     noAccount: "Нет аккаунта?",
     haveAccount: "Уже есть аккаунт?",

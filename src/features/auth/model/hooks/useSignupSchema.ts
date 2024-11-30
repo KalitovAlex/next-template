@@ -1,32 +1,26 @@
 import { t } from "@/shared/config/localization";
 import { z } from "zod";
 
+const personSchema = z.object({
+  firstName: z.string().min(1, t.auth.validation.firstNameRequired),
+  lastName: z.string().min(1, t.auth.validation.lastNameRequired),
+  patronymicName: z.string().optional(),
+});
+
 export const useSignupSchema = () => {
-  return z.object({
-    email: z
-      .string()
-      .min(1, t.auth.validation.emailRequired)
-      .email(t.auth.validation.emailInvalid),
+  const schema = z.object({
+    email: z.string().email(t.auth.validation.emailInvalid),
     password: z
       .string()
-      .min(1, t.auth.validation.passwordRequired)
       .min(6, t.auth.validation.passwordMin.replace("{{min}}", "6")),
-    person: z.object({
-      firstName: z.string().min(1, t.auth.validation.firstNameRequired),
-      lastName: z.string().min(1, t.auth.validation.lastNameRequired),
-      patronymicName: z.string().min(1, t.auth.validation.patronymicRequired),
-    }),
+    confirmPassword: z.string(),
+    person: personSchema,
+  });
+
+  return schema.refine((data) => data.password === data.confirmPassword, {
+    message: t.auth.validation.passwordsDoNotMatch,
+    path: ["confirmPassword"],
   });
 };
 
 export type SignupFormValues = z.infer<ReturnType<typeof useSignupSchema>>;
-
-export type SignupFormFields = {
-  email: string;
-  password: string;
-  person: {
-    firstName: string;
-    lastName: string;
-    patronymicName: string;
-  };
-};
