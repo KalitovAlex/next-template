@@ -59,7 +59,7 @@ export const LoginForm = () => {
               type="submit"
               color="primary"
               isLoading={isLoading}
-              className="w-full bg-primary-400 dark:bg-primary-900"
+              className="w-full bg-primary-400 font-bold dark:bg-primary-900"
               size="lg"
             >
               {t.auth.signIn}

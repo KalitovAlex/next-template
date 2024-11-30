@@ -6,11 +6,11 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <div className="absolute top-4 right-4">
+    <div className="relative min-h-screen">
+      <div className="fixed top-4 right-4 z-50">
         <ThemeSwitcher />
       </div>
-      {children}
+      <div className="relative z-0">{children}</div>
     </div>
   );
 }

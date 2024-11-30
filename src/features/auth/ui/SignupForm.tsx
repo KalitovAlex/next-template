@@ -131,7 +131,7 @@ export const SignupForm = () => {
               type="submit"
               color="primary"
               isLoading={isSigningUp}
-              className="w-full bg-primary-400 dark:bg-primary-900 p-4 text-lg"
+              className="w-full bg-primary-400 dark:bg-primary-900 font-bold p-4 text-lg"
               size="lg"
             >
               {t.auth.signUp}
