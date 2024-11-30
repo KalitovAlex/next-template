@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";
 import { useAuth } from "@/features/auth/model/useAuth";
 import {

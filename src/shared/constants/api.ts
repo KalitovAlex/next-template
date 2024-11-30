@@ -1,6 +1,6 @@
 export const ENDPOINTS = {
-  LOGIN: "/auth/signin",
+  LOGIN: "/auth/login",
   SIGNUP: "/auth/signup",
   REFRESH: "/auth/refresh",
-  GET_SELF: "/user/self",
-};
+  SELF: "/user/self",
+} as const;

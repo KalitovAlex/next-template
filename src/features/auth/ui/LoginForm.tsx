@@ -1,3 +1,5 @@
+"use client";
+
 import { FormFieldType } from "@/shared/ui/Form/types";
 import { useAuth } from "@/features/auth/model/useAuth";
 import { Button, Card, CardBody, CardHeader, Link } from "@nextui-org/react";

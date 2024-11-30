@@ -1,12 +1,16 @@
 import { axiosClient } from "@/shared/api/axios-client";
 import { ENDPOINTS } from "@/shared/constants/api";
-import type { LoginFormValues } from "../model/hooks/useLoginSchema";
-import type { SignupFormValues } from "../model/hooks/useSignupSchema";
 import type { Tokens } from "@/shared/types/auth";
+import { SignupFormValues } from "@/features/auth/model/hooks/useSignupSchema";
+import { LoginFormValues } from "@/features/auth/model/hooks/useLoginSchema";
+import { User } from "@/entities/user/model/types";
 
 export const authApi = {
   async login(credentials: LoginFormValues): Promise<Tokens> {
-    const { data } = await axiosClient.post<Tokens>(ENDPOINTS.LOGIN, credentials);
+    const { data } = await axiosClient.post<Tokens>(
+      ENDPOINTS.LOGIN,
+      credentials
+    );
     return data;
   },
 
@@ -19,6 +23,11 @@ export const authApi = {
     const { data } = await axiosClient.post<Tokens>(ENDPOINTS.REFRESH, {
       refreshToken,
     });
+    return data;
+  },
+
+  async getSelf(): Promise<User> {
+    const { data } = await axiosClient.get<User>(ENDPOINTS.SELF);
     return data;
   },
 };

@@ -1,37 +1,37 @@
-import axios from 'axios';
-import { getStoredToken } from '@/shared/lib/auth';
+import axios from "axios";
+import { tokenModel } from "@/features/auth/model/token.model";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 
 export const axiosClient = axios.create({
   baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   withCredentials: true,
 });
 
 axiosClient.interceptors.request.use(async (config) => {
-  const refreshToken = getStoredToken();
-  
+  const refreshToken = tokenModel.getRefreshToken();
+
   if (refreshToken) {
     try {
       const response = await axios.post(
-        `${BASE_URL}/auth/refresh`, 
+        `${BASE_URL}/auth/refresh`,
         { refreshToken },
         { withCredentials: true }
       );
-      
+
       const { accessToken } = response.data;
-      
+
       if (config.headers) {
         config.headers.Authorization = `Bearer ${accessToken}`;
       }
     } catch (error) {
-      console.error('Failed to refresh token');
+      console.error("Failed to refresh token");
     }
   }
-  
+
   return config;
 });
 
@@ -44,7 +44,7 @@ axiosClient.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshToken = getStoredToken();
+        const refreshToken = tokenModel.getRefreshToken();
         const response = await axios.post(
           `${BASE_URL}/auth/refresh`,
           { refreshToken },
@@ -59,10 +59,10 @@ axiosClient.interceptors.response.use(
 
         return axiosClient(originalRequest);
       } catch (error) {
-        console.error('Failed to refresh token');
+        console.error("Failed to refresh token");
       }
     }
 
     return Promise.reject(error);
   }
-); 
+);

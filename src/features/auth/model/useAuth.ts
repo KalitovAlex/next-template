@@ -57,6 +57,7 @@ export const useAuth = () => {
     try {
       reset();
       tokenModel.removeRefreshToken();
+
       toast.success(t.auth.successLogout);
       navigate.push("/auth");
     } catch (error) {
