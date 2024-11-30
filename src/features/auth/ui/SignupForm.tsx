@@ -130,7 +130,7 @@ export const SignupForm = () => {
               type="submit"
               color="primary"
               isLoading={isSigningUp}
-              className="w-full bg-primary-400 dark:bg-primary-900 font-bold p-4 text-lg"
+              className="w-full bg-primary font-bold bg-primary-400"
               size="lg"
             >
               Зарегистрироваться
@@ -141,7 +141,7 @@ export const SignupForm = () => {
               </span>
               <Link
                 href="/auth"
-                className="text-primary-400 dark:text-primary-400 text-sm font-medium"
+                className="text-primary-400 text-sm font-medium"
               >
                 Войти
               </Link>

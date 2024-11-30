@@ -6,7 +6,6 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -44,26 +43,6 @@ const config: Config = {
           colors: {
             background: "#FFFFFF",
             foreground: "#11181C",
-            primary: {
-              50: '#e6f1fe',
-              100: '#cce3fd',
-              200: '#99c7fb',
-              300: '#66aaf9',
-              400: '#338ef7',
-              DEFAULT: '#007BFF',
-              500: '#007BFF',
-              600: '#0056b3',
-              700: '#004494',
-              800: '#003366',
-              900: '#001f3f',
-            },
-            focus: '#007BFF',
-          },
-        },
-        dark: {
-          colors: {
-            background: "#0C0F17",
-            foreground: "#ECEDEE",
             primary: {
               50: '#e6f1fe',
               100: '#cce3fd',
