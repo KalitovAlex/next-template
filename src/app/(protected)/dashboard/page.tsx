@@ -1,5 +1,5 @@
-import { DashboardWrapper } from "./dashboard-wrapper";
+import { DashboardPage } from "@/page/dashboard/ui/DashboardPage";
 
 export default function DashBoard() {
-  return <DashboardWrapper />;
+  return <DashboardPage />;
 }
