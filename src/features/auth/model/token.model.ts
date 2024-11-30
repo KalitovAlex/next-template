@@ -3,11 +3,11 @@ import { REFRESH_TOKEN_KEY } from "@/shared/constants/auth";
 
 export const tokenModel = {
   setRefreshToken(token: string) {
-    Cookies.set(REFRESH_TOKEN_KEY, token, { 
+    Cookies.set(REFRESH_TOKEN_KEY, token, {
       path: "/",
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      expires: 30, // 30 дней
+      expires: 30, 
     });
   },
 

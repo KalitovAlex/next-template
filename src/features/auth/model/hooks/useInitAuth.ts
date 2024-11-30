@@ -5,6 +5,7 @@ import { authApi } from "@/features/auth/api/auth.api";
 import { useAuthStore } from "@/features/auth/model/store/auth.store";
 import { tokenModel } from "@/features/auth/model/token.model";
 import { useRouter } from "next/navigation";
+import { userApi } from "@/entities/user";
 
 export const useInitAuth = () => {
   const { setUser, setAccessToken, reset } = useAuthStore();
@@ -20,12 +21,10 @@ export const useInitAuth = () => {
       }
 
       try {
-        // Обновляем токены
         const tokens = await authApi.refresh(refreshToken);
         setAccessToken(tokens.accessToken);
 
-        // Получаем актуальные данные пользователя
-        const user = await authApi.getSelf();
+        const user = await userApi.getSelf();
         setUser(user);
 
         return user;
