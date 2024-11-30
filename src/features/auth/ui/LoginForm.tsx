@@ -40,40 +40,37 @@ export const LoginForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-[600px]">
-      <CardHeader className="flex justify-between items-center px-6 py-4">
-        <div className="flex flex-col">
-          <p className="text-md font-bold">{t.auth.welcomeBack}</p>
-          <p className="text-small text-default-500">
-            {t.auth.loginToContinue}
-          </p>
-        </div>
+    <Card className="w-full bg-content1">
+      <CardHeader className="flex flex-col gap-1 px-6 pt-6">
+        <h1 className="text-xl font-medium">{t.auth.welcomeBack}</h1>
+        <p className="text-sm text-default-500">{t.auth.loginToContinue}</p>
       </CardHeader>
-      <CardBody className="w-full px-6">
+      <CardBody className="px-6 pb-6">
         <Form<typeof loginSchema>
           fields={fields}
           onSubmit={handleSubmit}
           schema={loginSchema}
           className="w-full"
           autoComplete="off"
+          layout="flex"
         >
-          <div className="flex flex-col gap-2">
+          <div className="space-y-4 mt-4">
             <Button
               type="submit"
               color="primary"
               isLoading={isLoading}
-              className="w-full font-bold"
+              className="w-full bg-primary-400 dark:bg-primary-900"
+              size="lg"
             >
               {t.auth.signIn}
             </Button>
-            <div className="flex justify-center items-center gap-2">
-              <span className="text-small text-default-500">
+            <div className="flex justify-center items-center gap-2 pt-2">
+              <span className="text-default-500 text-sm">
                 {t.auth.noAccount}
               </span>
               <Link
                 href="/register"
-                size="sm"
-                className="text-primary font-bold"
+                className="text-primary-400 dark:text-primary-400 text-sm font-medium"
               >
                 {t.auth.signUp}
               </Link>

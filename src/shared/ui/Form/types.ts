@@ -57,7 +57,7 @@ export type FormFieldType =
   | PhoneInputProps
   | PasswordInputProps;
 
-export type FormLayout = "flex" | "grid";
+export type FormLayout = "flex" | "grid" | "adaptive";
 
 export interface FormProps<T extends z.ZodTypeAny> {
   fields: FormFieldType[];
@@ -67,6 +67,7 @@ export interface FormProps<T extends z.ZodTypeAny> {
   className?: string;
   autoComplete?: "on" | "off";
   layout?: FormLayout;
+  maxColumns?: 2 | 3;
 }
 
 export interface FormInputProps extends BaseInputProps {

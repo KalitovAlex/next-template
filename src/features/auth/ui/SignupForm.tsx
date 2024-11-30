@@ -101,7 +101,7 @@ export const SignupForm = () => {
       type: "text",
       placeholder: t.auth.enterPatronymic,
       autoComplete: "off",
-      className: "w-full",
+      className: "w-full f",
     },
   ];
 
@@ -111,38 +111,39 @@ export const SignupForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-[800px] dark:bg-content1">
-      <CardHeader className="flex justify-between items-center px-6 py-4">
-        <div className="flex flex-col">
-          <p className="text-md font-bold">{t.auth.createAccount}</p>
-          <p className="text-small text-default-500">
-            {t.auth.fillInformation}
-          </p>
-        </div>
+    <Card className="w-full bg-content1">
+      <CardHeader className="flex flex-col gap-1 px-6 pt-6">
+        <h1 className="text-xl font-medium">{t.auth.createAccount}</h1>
+        <p className="text-sm text-default-500">{t.auth.fillInformation}</p>
       </CardHeader>
-      <CardBody className="w-full px-6">
+      <CardBody className="px-4 pb-6">
         <Form<typeof signupSchema>
           fields={fields}
           onSubmit={handleSubmit}
           schema={signupSchema}
           className="w-full"
           autoComplete="off"
-          layout="grid"
+          layout="adaptive"
+          maxColumns={2}
         >
-          <div className="flex flex-col gap-2">
+          <div className="space-y-4 mt-4">
             <Button
               type="submit"
               color="primary"
               isLoading={isSigningUp}
-              className="w-full font-bold"
+              className="w-full bg-primary-400 dark:bg-primary-900 p-4 text-lg"
+              size="lg"
             >
               {t.auth.signUp}
             </Button>
-            <div className="flex justify-center items-center gap-2">
-              <span className="text-small text-default-500">
+            <div className="flex justify-center items-center gap-2 pt-2">
+              <span className="text-default-500 text-sm">
                 {t.auth.haveAccount}
               </span>
-              <Link href="/auth" size="sm" className="text-primary font-bold">
+              <Link
+                href="/auth"
+                className="text-primary-400 dark:text-primary-400 text-sm font-medium"
+              >
                 {t.auth.signIn}
               </Link>
             </div>
