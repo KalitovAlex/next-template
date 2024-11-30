@@ -7,16 +7,14 @@ import { toast } from "sonner";
 import { Tokens } from "@/shared/types/auth";
 import { authApi } from "@/features/auth/api/auth.api";
 import { useRouter } from "next/navigation";
-import { useLocale } from "@/shared/hooks/useLocale";
 
 export const useAuth = () => {
   const navigate = useRouter();
   const { setUser, setAccessToken, reset } = useAuthStore();
-  const { t } = useLocale();
 
   const handleAuthSuccess = (data: Tokens) => {
     if (!data.accessToken || !data.refreshToken || !data.user) {
-      toast.error(t.auth.invalidAuth);
+      toast.error("Invalid authentication");
       return;
     }
 
@@ -24,11 +22,11 @@ export const useAuth = () => {
       setAccessToken(data.accessToken);
       setUser(data.user);
       tokenModel.setRefreshToken(data.refreshToken);
-      toast.success(t.auth.successLogin);
+      toast.success("Successfully logged in");
       navigate.push("/dashboard");
     } catch (error) {
       console.error(error);
-      toast.error(t.auth.loginFailed);
+      toast.error("Login failed");
       reset();
       tokenModel.removeRefreshToken();
     }
@@ -38,7 +36,7 @@ export const useAuth = () => {
     mutationFn: authApi.login,
     onSuccess: handleAuthSuccess,
     onError: (error: Error) => {
-      toast.error(error.message || t.auth.loginFailed);
+      toast.error(error.message || "Login failed");
       reset();
       tokenModel.removeRefreshToken();
     },
@@ -48,7 +46,7 @@ export const useAuth = () => {
     mutationFn: authApi.signup,
     onSuccess: handleAuthSuccess,
     onError: (error: Error) => {
-      toast.error(error.message || t.auth.signupFailed);
+      toast.error(error.message || "Signup failed");
       reset();
       tokenModel.removeRefreshToken();
     },
@@ -59,11 +57,11 @@ export const useAuth = () => {
       reset();
       tokenModel.removeRefreshToken();
 
-      toast.success(t.auth.successLogout);
+      toast.success("Successfully logged out");
       navigate.push("/auth");
     } catch (error) {
       console.error(error);
-      toast.error(t.auth.loginFailed);
+      toast.error("Login failed");
     }
   };
 

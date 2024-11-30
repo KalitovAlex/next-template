@@ -1,18 +1,15 @@
-import { useLocale } from "@/shared/hooks/useLocale";
 import { z } from "zod";
 
 export const useLoginSchema = () => {
-  const { t } = useLocale();
-  
   return z.object({
     email: z
       .string()
-      .min(1, t.auth.validation.emailRequired)
-      .email(t.auth.validation.emailInvalid),
+      .min(1, "Email is required")
+      .email("Invalid email format"),
     password: z
       .string()
-      .min(1, t.auth.validation.passwordRequired)
-      .min(6, t.auth.validation.passwordMin.replace("{{min}}", "6")),
+      .min(1, "Password is required")
+      .min(6, "Password must be at least 6 characters"),
   });
 };
 

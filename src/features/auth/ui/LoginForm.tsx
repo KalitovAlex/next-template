@@ -7,29 +7,27 @@ import {
   LoginFormValues,
   useLoginSchema,
 } from "@/features/auth/model/hooks/useLoginSchema";
-import { useLocale } from "@/shared/hooks/useLocale";
 import { Form } from "@/shared/ui/Form/Form";
 
 export const LoginForm = () => {
   const { login, isLoading } = useAuth();
   const loginSchema = useLoginSchema();
-  const { t } = useLocale();
 
   const fields: FormFieldType[] = [
     {
       name: "email",
-      label: t.auth.email,
+      label: "Email",
       type: "email",
-      placeholder: t.auth.enterEmail,
+      placeholder: "Enter your email",
       required: true,
       autoComplete: "new-password",
       className: "w-full",
     },
     {
       name: "password",
-      label: t.auth.password,
+      label: "Password",
       type: "password",
-      placeholder: t.auth.enterPassword,
+      placeholder: "Enter your password",
       required: true,
       autoComplete: "new-password",
       className: "w-full",
@@ -43,8 +41,8 @@ export const LoginForm = () => {
   return (
     <Card className="w-full bg-content1">
       <CardHeader className="flex flex-col gap-1 px-6 pt-6">
-        <h1 className="text-xl font-medium">{t.auth.welcomeBack}</h1>
-        <p className="text-sm text-default-500">{t.auth.loginToContinue}</p>
+        <h1 className="text-xl font-medium">Добро пожаловать</h1>
+        <p className="text-sm text-default-500">Войдите для продолжения</p>
       </CardHeader>
       <CardBody className="px-6 pb-6">
         <Form<typeof loginSchema>
@@ -63,17 +61,15 @@ export const LoginForm = () => {
               className="w-full bg-primary-400 font-bold dark:bg-primary-900"
               size="lg"
             >
-              {t.auth.signIn}
+              Войти
             </Button>
             <div className="flex justify-center items-center gap-2 pt-2">
-              <span className="text-default-500 text-sm">
-                {t.auth.noAccount}
-              </span>
+              <span className="text-default-500 text-sm">Нет аккаунта?</span>
               <Link
                 href="/register"
                 className="text-primary-400 dark:text-primary-400 text-sm font-medium"
               >
-                {t.auth.signUp}
+                Зарегистрироваться
               </Link>
             </div>
           </div>

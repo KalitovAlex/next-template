@@ -1,11 +1,10 @@
 "use client";
 
 import { Button } from "@nextui-org/react";
-import { useTheme } from "next-themes";
 import { SunIcon } from "@/shared/ui/icons/SunIcon";
 import { MoonIcon } from "@/shared/ui/icons/MoonIcon";
 import { useEffect, useState } from "react";
-import { t } from "@/shared/config/i18n";
+import { useTheme } from "next-themes";
 
 export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
@@ -25,7 +24,7 @@ export const ThemeSwitcher = () => {
     <Button
       isIconOnly
       variant="ghost"
-      aria-label={t.common.toggleTheme}
+      aria-label="Toggle theme"
       className="w-10 h-10 bg-default-100 hover:bg-default-200 transition-all duration-300 ease-in-out"
       onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
     >
