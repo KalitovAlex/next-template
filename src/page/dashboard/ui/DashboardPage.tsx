@@ -20,7 +20,7 @@ export const DashboardPage = () => {
         </div>
       )}
       <div className="flex gap-4">
-        <Button onClick={logout} color="primary">
+        <Button onClick={logout} variant="solid">
           Logout
         </Button>
       </div>
