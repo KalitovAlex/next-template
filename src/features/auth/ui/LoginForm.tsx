@@ -7,12 +7,13 @@ import {
   LoginFormValues,
   useLoginSchema,
 } from "@/features/auth/model/hooks/useLoginSchema";
-import { t } from "@/shared/config/localization";
+import { useLocale } from "@/shared/hooks/useLocale";
 import { Form } from "@/shared/ui/Form/Form";
 
 export const LoginForm = () => {
   const { login, isLoading } = useAuth();
   const loginSchema = useLoginSchema();
+  const { t } = useLocale();
 
   const fields: FormFieldType[] = [
     {

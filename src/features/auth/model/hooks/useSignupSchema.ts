@@ -1,13 +1,15 @@
-import { t } from "@/shared/config/localization";
+import { useLocale } from "@/shared/hooks/useLocale";
 import { z } from "zod";
 
-const personSchema = z.object({
-  firstName: z.string().min(1, t.auth.validation.firstNameRequired),
-  lastName: z.string().min(1, t.auth.validation.lastNameRequired),
-  patronymicName: z.string().optional(),
-});
-
 export const useSignupSchema = () => {
+  const { t } = useLocale();
+
+  const personSchema = z.object({
+    firstName: z.string().min(1, t.auth.validation.firstNameRequired),
+    lastName: z.string().min(1, t.auth.validation.lastNameRequired),
+    patronymicName: z.string().optional(),
+  });
+
   const schema = z.object({
     email: z.string().email(t.auth.validation.emailInvalid),
     password: z

@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { SunIcon } from "@/shared/ui/icons/SunIcon";
 import { MoonIcon } from "@/shared/ui/icons/MoonIcon";
 import { useEffect, useState } from "react";
-import { t } from "@/shared/config/localization";
+import { t } from "@/shared/config/i18n";
 
 export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);

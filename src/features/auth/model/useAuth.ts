@@ -5,13 +5,14 @@ import { tokenModel } from "./token.model";
 import { useAuthStore } from "./store/auth.store";
 import { toast } from "sonner";
 import { Tokens } from "@/shared/types/auth";
-import { t } from "@/shared/config/localization";
 import { authApi } from "@/features/auth/api/auth.api";
 import { useRouter } from "next/navigation";
+import { useLocale } from "@/shared/hooks/useLocale";
 
 export const useAuth = () => {
   const navigate = useRouter();
   const { setUser, setAccessToken, reset } = useAuthStore();
+  const { t } = useLocale();
 
   const handleAuthSuccess = (data: Tokens) => {
     if (!data.accessToken || !data.refreshToken || !data.user) {

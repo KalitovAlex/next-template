@@ -7,11 +7,11 @@ import {
   useSignupSchema,
 } from "@/features/auth/model/hooks/useSignupSchema";
 import { FormFieldType } from "@/shared/ui/Form/types";
-import { t } from "@/shared/config/localization";
-import { Form } from "@/shared/ui/Form/Form";
-import { useState } from "react";
 import { EyeSlashIcon } from "@/shared/ui/Form/icons/EyeSlashIcon";
 import { EyeIcon } from "@/shared/ui/Form/icons/EyeIcon";
+import { useLocale } from "@/shared/hooks/useLocale";
+import { useState } from "react";
+import { Form } from "@/shared/ui/Form/Form";
 
 export const SignupForm = () => {
   const { signup, isSigningUp } = useAuth();
@@ -19,6 +19,7 @@ export const SignupForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
+  const { t } = useLocale();
 
   const togglePasswordVisibility = () =>
     setIsPasswordVisible(!isPasswordVisible);

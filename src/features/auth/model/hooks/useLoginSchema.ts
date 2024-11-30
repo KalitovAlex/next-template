@@ -1,7 +1,9 @@
-import { t } from "@/shared/config/localization";
+import { useLocale } from "@/shared/hooks/useLocale";
 import { z } from "zod";
 
 export const useLoginSchema = () => {
+  const { t } = useLocale();
+  
   return z.object({
     email: z
       .string()

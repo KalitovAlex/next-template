@@ -3,25 +3,22 @@
 import { Button } from "@nextui-org/react";
 import { useAuth } from "@/features/auth/model/useAuth";
 import { useAuthStore } from "@/features/auth/model/store/auth.store";
+import { t } from "@/shared/config/i18n";
 
 export const DashboardPage = () => {
   const { logout } = useAuth();
   const user = useAuthStore((state) => state.user);
 
   return (
-    <div className="min-h-screen bg-background p-4">
-      <h1 className="text-2xl font-bold text-foreground mb-4">Dashboard</h1>
+    <div className="container mx-auto p-4">
       {user && (
-        <div className="mb-4">
-          <p>
-            Welcome, {user.person.firstName} {user.person.lastName}
-          </p>
+        <div>
           <p>Email: {user.email}</p>
         </div>
       )}
       <div className="flex gap-4">
         <Button onClick={logout} variant="solid">
-          Logout
+          {t.auth.signOut}
         </Button>
       </div>
     </div>
