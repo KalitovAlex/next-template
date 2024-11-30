@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 const DashboardPage = dynamic(
   () =>
-    import("@/pages/dashboard/ui/DashboardPage").then(
+    import("@/page/dashboard/ui/DashboardPage").then(
       (mod) => mod.DashboardPage
     ),
   { ssr: false }
