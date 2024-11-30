@@ -3,7 +3,6 @@
 import { Button } from "@nextui-org/react";
 import { useAuth } from "@/features/auth/model/useAuth";
 import { useAuthStore } from "@/features/auth/model/store/auth.store";
-import { t } from "@/shared/config/i18n";
 
 export const DashboardPage = () => {
   const { logout } = useAuth();
@@ -18,7 +17,7 @@ export const DashboardPage = () => {
       )}
       <div className="flex gap-4">
         <Button onClick={logout} variant="solid">
-          {t.auth.signOut}
+          Выйти
         </Button>
       </div>
     </div>
