@@ -24,12 +24,12 @@ export const ThemeSwitcher = () => {
   return (
     <Button
       isIconOnly
-      variant="light"
+      variant="ghost"
       aria-label={t.common.toggleTheme}
-      className="w-10 h-10 text-default-500"
+      className="w-10 h-10 bg-default-100 hover:bg-default-200 transition-all duration-300 ease-in-out"
       onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
     >
-      <div className="w-5 h-5">
+      <div className="w-5 h-5 transition-transform duration-300 ease-in-out">
         {currentTheme === "dark" ? <SunIcon /> : <MoonIcon />}
       </div>
     </Button>
